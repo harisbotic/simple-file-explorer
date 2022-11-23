@@ -42,4 +42,8 @@ app.MapPost("/files",
                     [FromServices] SimpleFinderDbContext db)
                     => Create.Handle(command, db));
                     
+app.MapPost("/files/move_to",
+                    ([FromBody] MoveTo.Command command,
+                    [FromServices] SimpleFinderDbContext db)
+                    => MoveTo.Handle(command, db));
 app.Run();
