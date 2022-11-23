@@ -1,0 +1,8 @@
+.fileListcontainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    margin: 0px 4px;
+}
