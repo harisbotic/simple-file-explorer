@@ -1,0 +1,14 @@
+with recursive detect_infinites as (
+     select fn.parent_id, id as child, 1 as depth
+     from file_nodes fn
+
+     union all
+
+     select di.parent_id, rn.id as child, di.depth + 1 AS depth
+     from detect_infinites di
+        join file_nodes rn on di.child = rn.parent_id
+     WHERE di.depth < 10
+)
+SELECT DISTINCT parent_id
+FROM detect_infinites
+WHERE parent_id = child;
