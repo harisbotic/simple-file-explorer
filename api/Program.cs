@@ -37,5 +37,9 @@ app.MapGet("/files",
                     [FromServices] SimpleFinderDbContext db)
                     => GetFilesFromPath.Handle(path, db));
 
-
+app.MapPost("/files",
+                    ([FromBody] Create.Command command,
+                    [FromServices] SimpleFinderDbContext db)
+                    => Create.Handle(command, db));
+                    
 app.Run();
